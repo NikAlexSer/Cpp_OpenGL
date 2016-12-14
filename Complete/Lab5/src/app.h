@@ -17,6 +17,9 @@
 using namespace std;
 using namespace glm;
 
+#define FOURCC_DXT1 0x31545844 // Equivalent to "DXT1" in ASCII
+#define FOURCC_DXT3 0x33545844 // Equivalent to "DXT3" in ASCII
+#define FOURCC_DXT5 0x35545844 // Equivalent to "DXT5" in ASCII
 
 class App {
 	public:
@@ -41,7 +44,10 @@ class App {
 		vec3 angles;
 
 		GLuint loadBmp(string fileName);
+		GLuint loadDDS(string fileName);
 		GLuint texture1;
+		GLuint texture2;
+
 
 		GLFWwindow* getWindow() {
 			return window;
@@ -57,4 +63,5 @@ class App {
 		GLuint vertexBuffer;
 		GLuint colorBuffer;
 		GLuint uvBuffer;
+		float mixFactor;
 };

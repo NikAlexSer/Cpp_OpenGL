@@ -26,6 +26,21 @@ void App::key_callback(GLFWwindow* window, int key, int scancode, int action, in
 	if (mods == 1 && (key == 'x' || key == 'X')) getInstance().angles.x -= moveStep;
 	if (mods == 1 && (key == 'y' || key == 'Y')) getInstance().angles.y -= moveStep;
 	if (mods == 1 && (key == 'z' || key == 'Z')) getInstance().angles.z -= moveStep;
+	
+	if (key == '1') {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	}
+
+	if (key == '2') {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	}
+
+	if (key == '3') getInstance().mixFactor += 0.05;
+	if (key == '4') getInstance().mixFactor -= 0.05;
+	if (getInstance().mixFactor < 0) getInstance().mixFactor = 0.0;
+	if (getInstance().mixFactor > 1) getInstance().mixFactor = 1.0;
 }
 
 void App::mouse_callback(GLFWwindow* window, int a, int b, int c) {
@@ -104,7 +119,10 @@ void App::setupScene() {
 
 	//Предоставляем наши вершины в OpenGL
 	glBufferData(GL_ARRAY_BUFFER, sizeof(gVertexBufferData), gVertexBufferData, GL_STATIC_DRAW);
-	texture1 = loadBmp("container.bmp");
+	texture1 = loadDDS("container.DDS");
+	texture2 = loadDDS("iron.DDS");
+	//texture1 = loadBmp("container.bmp");
+	mixFactor = 0;
 
 	static const GLfloat gUVBufferData[] = {
 		//Текстурные координаты для 1 грани куба
@@ -129,29 +147,26 @@ void App::setupScene() {
 		0.0f, 1.0f,
 		1.0f, 1.0f,
 		//Текстурные координаты для 4 грани куба
-		1.0f, 0.0f,
-		0.0f, 1.0f,
 		1.0f, 1.0f,
-
 		0.0f, 0.0f,
 		0.0f, 1.0f,
 		1.0f, 1.0f,
+		0.0f, 0.0f,
+		0.0f, 1.0f,
 		//Текстурные координаты для 5 грани куба
-		1.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 1.0f,
-
+		1.0f, 1.0f,
 		1.0f, 0.0f,
-		0.0f, 1.0f,
+		0.0f, 0.0f,
 		1.0f, 1.0f,
 		//Текстурные координаты для 6 грани куба
-		0.0f, 0.0f,
 		1.0f, 1.0f,
 		1.0f, 0.0f,
-
+		0.0f, 0.0f,
+		1.0f, 1.0f,
 		0.0f, 0.0f,
 		0.0f, 1.0f,
-		1.0f, 1.0f,
 	};
 
 	glGenBuffers(1, &uvBuffer);
@@ -265,6 +280,11 @@ void App::draw() {
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	glUniform1i(glGetUniformLocation(shader.getProgramID(), "shaderTexture1"), 0);
 
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, texture2);
+	glUniform1i(glGetUniformLocation(shader.getProgramID(), "shaderTexture2"), 1);
+	glUniform1f(glGetUniformLocation(shader.getProgramID(), "mixFactor"), getInstance().mixFactor);
+	
 	shader.use();
 
 	glEnable(GL_DEPTH_TEST);
@@ -288,7 +308,7 @@ GLuint App::loadBmp(string fileName) {
 	//Получаем путь до проги, конвертируем, ищем слэш,
 	//копируем в переменную exePath и формируем полный путь
 	char buffer[MAX_PATH];
-	GetModuleFileNameA(NULL, buffer, MAX_PACKAGE_NAME);
+	GetModuleFileNameA(NULL, buffer, MAX_PATH);
 	string exePathWithName = string(buffer);
 	string::size_type pos = exePathWithName.find_last_of("\\/");
 	string exePath = string(exePathWithName).substr(0, pos);
@@ -330,6 +350,84 @@ GLuint App::loadBmp(string fileName) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	delete data;
+	return textureID;
+}
+
+GLuint App::loadDDS(string fileName) {
+	char buffer[MAX_PATH];
+	GetModuleFileNameA(NULL, buffer, MAX_PATH);
+	string exePathWithName = string(buffer);
+	string::size_type pos = exePathWithName.find_last_of("\\/");
+	string exePath = string(exePathWithName).substr(0, pos);
+	string fullPath = exePath + "\\data\\" + fileName;
+
+	//открытие
+	FILE * file = fopen(fullPath.c_str(), "rb");
+	if (!file) {
+		cout << "error load image!" << endl;
+		return 0;
+	}
+
+	char filecode[4];
+	fread(filecode, 1, 4, file);
+	if (strncmp(filecode, "DDS ", 4) != 0) {
+		fclose(file);
+		cout << "extension file wrong!" << endl;
+		cout << "error load image!" << endl;
+		return 0;
+	}
+	unsigned char header[124];
+	fread(&header, 124, 1, file);
+	unsigned int height			= *(unsigned int*)&(header[8 ]);
+	unsigned int width			= *(unsigned int*)&(header[12]);
+	unsigned int linearSize		= *(unsigned int*)&(header[16]);
+	unsigned int mipMapCount	= *(unsigned int*)&(header[24]);
+	unsigned int fourCC			= *(unsigned int*)&(header[80]);
+
+	unsigned char * bufferData;
+	unsigned int bufsize;
+	bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize;
+	bufferData = (unsigned char*)malloc(bufsize * sizeof(unsigned char));
+	fread(bufferData, 1, bufsize, file);
+	fclose(file);
+
+	//Сжатие и тд и тп
+	unsigned int components = (fourCC == FOURCC_DXT1) ? 3 : 4;
+	unsigned int format;
+	switch (fourCC) {
+		case FOURCC_DXT1:
+			format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+			break;
+		case FOURCC_DXT3:
+			format = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+			break;
+		case FOURCC_DXT5:
+			format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+			break;
+		default:
+			free(bufferData);
+			return 0;
+	}
+
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	
+	unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16;
+	unsigned int offset = 0;
+	for (unsigned int level = 0; level < mipMapCount && (width || height); ++level) {
+		unsigned int size = ((width + 3) / 4)*((height + 3) / 4)*blockSize;
+		glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, height, 0, size, bufferData + offset);
+		offset += size;
+		width /= 2;
+		height /= 2;
+	}
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	delete bufferData;
 	return textureID;
 }
 
