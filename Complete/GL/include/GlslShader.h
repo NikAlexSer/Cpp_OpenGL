@@ -26,6 +26,9 @@ public:
 	}
 	/// Передаем в шейдер матрицу 4*4:
 	void setUniformMatrix4fv(string name, GLfloat* value);
+	void setUniform1f(string name, GLfloat value);
+	void setUniform3f(string name, GLfloat x, GLfloat y, GLfloat z);
+
 
 private:
 	/// Зарегистрированный ID нашей шейдерной программы в GL, или проще говоря идентификатор:

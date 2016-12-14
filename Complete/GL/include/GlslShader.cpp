@@ -107,3 +107,13 @@ void GlslShader::setUniformMatrix4fv(string name, GLfloat* value) {
 	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
 	glUniformMatrix4fv(uniformID, 1, GL_FALSE, value);
 }
+
+void GlslShader::setUniform1f(string name, GLfloat value) {
+	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
+	glUniform1f(uniformID, value);
+}
+
+void GlslShader::setUniform3f(string name, GLfloat x, GLfloat y, GLfloat z) {
+	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
+	glUniform3f(uniformID, x, y, z);
+}
