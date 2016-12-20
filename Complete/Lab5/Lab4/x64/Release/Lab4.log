@@ -1,15 +1,26 @@
-﻿Сборка начата 14.12.2016 19:23:22.
-     1>Проект "E:\OpenGL\Complete\Lab5\Lab4\Lab4.vcxproj" в узле 2 (целевые объекты Build).
-     1>Link:
-         Lab4.vcxproj -> E:\OpenGL\Complete\Lab5\x64\Release\Lab5.exe
-       PostBuildEvent:
-         xcopy /e /i /y "..\..\GL\bin\*.dll" "E:\OpenGL\Complete\Lab5\x64\Release" 
-         :VCEnd
-         ..\..\GL\bin\glew32.dll
-         ..\..\GL\bin\glfw3.dll
-         Скопировано файлов: 2.
-     1>Сборка проекта "E:\OpenGL\Complete\Lab5\Lab4\Lab4.vcxproj" завершена (целевые объекты Build).
-
-Сборка успешно завершена.
-
-Затраченное время: 00:00:04.18
+﻿  GlslShader.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  D:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+..\..\GL\include\GlslShader.cpp(65): warning C4477: "printf": в строке форматирования "%s" требуется аргумент типа "char *", но вариативный аргумент "1" имеет тип "std::string"
+  app.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  D:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+..\src\app.cpp(11): warning C4305: инициализация: усечение из "double" к "float"
+..\src\app.cpp(40): warning C4305: +=: усечение из "double" к "float"
+..\src\app.cpp(41): warning C4305: -=: усечение из "double" к "float"
+..\src\app.cpp(217): warning C4305: аргумент: усечение из "double" к "float"
+  main.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  D:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+  SimpleCamera.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  D:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+..\src\SimpleCamera.cpp(47): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  Создание кода
+  All 326 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  Lab4.vcxproj -> D:\OpenGL\Complete\Lab5\x64\Release\Lab5.exe
+  Lab4.vcxproj -> D:\OpenGL\Complete\Lab5\x64\Release\Lab5.pdb (Full PDB)
+  ..\..\GL\bin\glew32.dll
+  ..\..\GL\bin\glfw3.dll
+  Скопировано файлов: 2.
