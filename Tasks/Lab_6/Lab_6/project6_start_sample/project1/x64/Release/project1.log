@@ -1,8 +1,0 @@
-﻿  GlslShader.cpp
-  app.cpp
-  main.cpp
-  SimpleCamera.cpp
-c1xx : fatal error C1083: Не удается открыть файл источник: ..\..\GL\include\GlslShader.cpp: No such file or directory
-c:\opengl\tasks\lab_6\lab_6\project6_start_sample\src\app.h(1): fatal error C1083: Не удается открыть файл включение: glew.h: No such file or directory (компилируется исходный файл ..\src\app.cpp)
-c:\opengl\tasks\lab_6\lab_6\project6_start_sample\src\app.h(1): fatal error C1083: Не удается открыть файл включение: glew.h: No such file or directory (компилируется исходный файл ..\src\main.cpp)
-c:\opengl\tasks\lab_6\lab_6\project6_start_sample\src\SimpleCamera.h(1): fatal error C1083: Не удается открыть файл включение: glew.h: No such file or directory (компилируется исходный файл ..\src\SimpleCamera.cpp)
