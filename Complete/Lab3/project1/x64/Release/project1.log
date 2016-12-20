@@ -1,34 +1,22 @@
-﻿Сборка начата 14.12.2016 19:07:45.
-     1>Проект "E:\OpenGL\Complete\Lab3\project1\project1.vcxproj" в узле 2 (целевые объекты Rebuild).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\GL\include /Zi /nologo /W3 /WX- /MP /O2 /Oi /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\..\GL\include\GlslShader.cpp ..\src\app.cpp
-         GlslShader.cpp
-         app.cpp
-     1>C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения (компилируется исходный файл ..\..\GL\include\GlslShader.cpp)
-         E:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY" (компилируется исходный файл ..\..\GL\include\GlslShader.cpp)
-     1>C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения (компилируется исходный файл ..\src\app.cpp)
-         E:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY" (компилируется исходный файл ..\src\app.cpp)
-     1>..\..\GL\include\GlslShader.cpp(65): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
-     1>e:\opengl\complete\lab3\src\app.h(21): warning C4305: инициализация: усечение из "double" к "float" (компилируется исходный файл ..\src\app.cpp)
-     1>..\src\app.cpp(17): warning C4305: +=: усечение из "double" к "float"
-     1>..\src\app.cpp(18): warning C4305: -=: усечение из "double" к "float"
-     1>..\src\app.cpp(21): warning C4305: +=: усечение из "double" к "float"
-     1>..\src\app.cpp(26): warning C4305: -=: усечение из "double" к "float"
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\OpenGL\Complete\Lab3\x64\Release\Lab3.exe" /NOLOGO /LIBPATH:..\..\GL\lib glfw3dll.lib opengl32.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\OpenGL\Complete\Lab3\x64\Release\Lab3.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\OpenGL\Complete\Lab3\x64\Release\Lab3.lib" /MACHINE:X64 x64\Release\GlslShader.obj
-         x64\Release\app.obj
-         Создание кода
-         All 299 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-         Создание кода завершено
-         project1.vcxproj -> E:\OpenGL\Complete\Lab3\x64\Release\Lab3.exe
-       PostBuildEvent:
-         xcopy /e /i /y "..\..\GL\bin\*.dll" "E:\OpenGL\Complete\Lab3\\x64\Release"
-         :VCEnd
-         ..\..\GL\bin\glew32.dll
-         ..\..\GL\bin\glfw3.dll
-         Скопировано файлов: 2.
-     1>Сборка проекта "E:\OpenGL\Complete\Lab3\project1\project1.vcxproj" завершена (целевые объекты Rebuild).
-
-Сборка успешно завершена.
-
-Затраченное время: 00:00:28.51
+﻿  GlslShader.cpp
+  app.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения (компилируется исходный файл ..\src\app.cpp)
+  D:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY" (компилируется исходный файл ..\src\app.cpp)
+C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения (компилируется исходный файл ..\..\GL\include\GlslShader.cpp)
+  D:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY" (компилируется исходный файл ..\..\GL\include\GlslShader.cpp)
+..\..\GL\include\GlslShader.cpp(65): warning C4477: "printf": в строке форматирования "%s" требуется аргумент типа "char *", но вариативный аргумент "1" имеет тип "std::string"
+d:\opengl\complete\lab3\src\app.h(21): warning C4305: инициализация: усечение из "double" к "float" (компилируется исходный файл ..\src\app.cpp)
+..\src\app.cpp(17): warning C4305: +=: усечение из "double" к "float"
+..\src\app.cpp(18): warning C4305: -=: усечение из "double" к "float"
+..\src\app.cpp(21): warning C4305: +=: усечение из "double" к "float"
+..\src\app.cpp(26): warning C4305: -=: усечение из "double" к "float"
+  Создание кода
+  67 of 306 functions (21.9%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  project1.vcxproj -> D:\OpenGL\Complete\Lab3\x64\Release\Lab3.exe
+  project1.vcxproj -> D:\OpenGL\Complete\Lab3\x64\Release\Lab3.pdb (Full PDB)
+  ..\..\GL\bin\glew32.dll
+  ..\..\GL\bin\glfw3.dll
+  Скопировано файлов: 2.

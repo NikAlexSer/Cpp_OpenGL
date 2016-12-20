@@ -43,11 +43,5 @@
     <None Include="..\Release\simpleShader.frag">
       <Filter>shaders</Filter>
     </None>
-    <None Include="..\x64\Release\simpleShader.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="..\x64\Release\simpleShader.vert">
-      <Filter>shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>
