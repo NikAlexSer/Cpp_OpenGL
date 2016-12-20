@@ -1,17 +1,15 @@
-﻿  app.cpp
-C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
-  C:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
-..\src\app.cpp(11): warning C4305: инициализация: усечение из "double" к "float"
-..\src\app.cpp(40): warning C4305: +=: усечение из "double" к "float"
-..\src\app.cpp(41): warning C4305: -=: усечение из "double" к "float"
-..\src\app.cpp(217): warning C4305: аргумент: усечение из "double" к "float"
-  Создание кода
-  21 of 326 functions ( 6.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
-  Lab4.vcxproj -> C:\OpenGL\Complete\Lab5\x64\Release\Lab5.exe
-  Lab4.vcxproj -> C:\OpenGL\Complete\Lab5\x64\Release\Lab5.pdb (Full PDB)
-  ..\..\GL\bin\glew32.dll
-  ..\..\GL\bin\glfw3.dll
-  Скопировано файлов: 2.
+﻿Сборка начата 14.12.2016 19:23:22.
+     1>Проект "E:\OpenGL\Complete\Lab5\Lab4\Lab4.vcxproj" в узле 2 (целевые объекты Build).
+     1>Link:
+         Lab4.vcxproj -> E:\OpenGL\Complete\Lab5\x64\Release\Lab5.exe
+       PostBuildEvent:
+         xcopy /e /i /y "..\..\GL\bin\*.dll" "E:\OpenGL\Complete\Lab5\x64\Release" 
+         :VCEnd
+         ..\..\GL\bin\glew32.dll
+         ..\..\GL\bin\glfw3.dll
+         Скопировано файлов: 2.
+     1>Сборка проекта "E:\OpenGL\Complete\Lab5\Lab4\Lab4.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:04.18

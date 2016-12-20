@@ -1,18 +1,35 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (Lab5.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  app.cpp
-C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
-  C:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
-..\src\app.cpp(11): warning C4305: инициализация: усечение из "double" к "float"
-..\src\app.cpp(40): warning C4305: +=: усечение из "double" к "float"
-..\src\app.cpp(41): warning C4305: -=: усечение из "double" к "float"
-..\src\app.cpp(103): warning C4305: аргумент: усечение из "double" к "float"
-  Создание кода
-  25 of 337 functions ( 7.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    26 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
-  Lab4.vcxproj -> C:\OpenGL\Complete\Lab6\x64\Release\Lab6.exe
-  Lab4.vcxproj -> C:\OpenGL\Complete\Lab6\x64\Release\Lab6.pdb (Full PDB)
-  ..\..\GL\bin\glew32.dll
-  ..\..\GL\bin\glfw3.dll
-  Скопировано файлов: 2.
+﻿Сборка начата 14.12.2016 18:16:44.
+     1>Проект "E:\OpenGL\Complete\Lab6\Lab4\Lab4.vcxproj" в узле 2 (целевые объекты Build).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (Lab5.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\GL\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\src\app.cpp
+         app.cpp
+     1>C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+         E:\OpenGL\Complete\GL\include\GLFW/glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+     1>..\src\app.cpp(11): warning C4305: инициализация: усечение из "double" к "float"
+     1>..\src\app.cpp(40): warning C4305: +=: усечение из "double" к "float"
+     1>..\src\app.cpp(41): warning C4305: -=: усечение из "double" к "float"
+     1>..\src\app.cpp(103): warning C4305: аргумент: усечение из "double" к "float"
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\OpenGL\Complete\Lab6\x64\Release\Lab6.exe" /NOLOGO /LIBPATH:../../GL/lib glfw3dll.lib opengl32.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\OpenGL\Complete\Lab6\x64\Release\Lab6.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\OpenGL\Complete\Lab6\x64\Release\Lab6.lib" /MACHINE:X64 x64\Release\GlslShader.obj
+         x64\Release\app.obj
+         x64\Release\main.obj
+         x64\Release\SimpleCamera.obj
+         x64\Release\Skybox.obj
+         Создание кода
+         2 of 326 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+           0 functions were new in current compilation
+           0 functions had inline decision re-evaluated but remain unchanged
+         Создание кода завершено
+         Lab4.vcxproj -> E:\OpenGL\Complete\Lab6\x64\Release\Lab6.exe
+       PostBuildEvent:
+         xcopy /e /i /y "..\..\GL\bin\*.dll" "E:\OpenGL\Complete\Lab6\x64\Release" 
+         :VCEnd
+         ..\..\GL\bin\glew32.dll
+         ..\..\GL\bin\glfw3.dll
+         Скопировано файлов: 2.
+     1>Сборка проекта "E:\OpenGL\Complete\Lab6\Lab4\Lab4.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:23.63

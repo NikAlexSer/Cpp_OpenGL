@@ -31,6 +31,8 @@
       <FileType>Document</FileType>
     </None>
     <None Include="..\Release\simpleShader.vert" />
+    <None Include="..\x64\Release\simpleShader.frag" />
+    <None Include="..\x64\Release\simpleShader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A296C3BC-4FD8-40FE-A6C0-1386B7027FC3}</ProjectGuid>

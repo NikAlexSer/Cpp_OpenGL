@@ -100,7 +100,7 @@ void App::setup(int w, int h, string captionWindow, bool useAntiAliasing) {
 	getInstance().axis = vec3(0, 0, 1);
 
 	//»нит камера
-	camera.setup(getWindow(), vec3(0, 0, 5), 3.14, 0.0f, 45.f, 3, 0.01, 1000);
+	camera.setup(getWindow(), vec3(0, 0, 10), 3.14, 0.0f, 45.f, 3, 0.01, 1000);
 }
 
 //обновление всей логики и переменных
