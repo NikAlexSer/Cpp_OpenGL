@@ -1,0 +1,24 @@
+﻿  SimpleCamera.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  c:\opengl\complete\gl\include\glfw\glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+c:\opengl\complete\lab6\src\simplecamera.cpp(47): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  main.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  c:\opengl\complete\gl\include\glfw\glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+  app.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  c:\opengl\complete\gl\include\glfw\glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+c:\opengl\complete\lab6\src\app.cpp(11): warning C4305: инициализация: усечение из "double" к "float"
+c:\opengl\complete\lab6\src\app.cpp(40): warning C4305: +=: усечение из "double" к "float"
+c:\opengl\complete\lab6\src\app.cpp(41): warning C4305: -=: усечение из "double" к "float"
+c:\opengl\complete\lab6\src\app.cpp(217): warning C4305: аргумент: усечение из "double" к "float"
+  GlslShader.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  c:\opengl\complete\gl\include\glfw\glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+c:\opengl\complete\gl\include\glslshader.cpp(65): warning C4477: "printf": в строке форматирования "%s" требуется аргумент типа "char *", но вариативный аргумент "1" имеет тип "std::string"
+  Создание кода...
+  Lab4.vcxproj -> C:\OpenGL\Complete\Lab6\x64\Debug\Lab6.exe
+  Lab4.vcxproj -> C:\OpenGL\Complete\Lab6\x64\Debug\Lab6.pdb (Partial PDB)
+  ..\..\GL\bin\glew32.dll
+  ..\..\GL\bin\glfw3.dll
+  Скопировано файлов: 2.

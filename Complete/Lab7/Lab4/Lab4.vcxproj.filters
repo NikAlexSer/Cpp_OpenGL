@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\app.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GL\include\GlslShader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SimpleCamera.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Skybox.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SimpleLoaderCollada3D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinystr.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinyxml.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinyxmlerror.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinyxmlparser.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SimplePointLight.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\app.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GL\include\GlslShader.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\main.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SimpleCamera.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\loadTexture.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Skybox.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SimpleLoaderCollada3D.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SimplePointLight.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release\data\skyBox.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\skyBox.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\simpleShader.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\simpleShader.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\simpleShader2.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\simpleShader2.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\lightBox.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\lightBox.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\PhongSimpleLight.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\PhongSimpleLight.vert">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{6eac7620-9546-44c1-9bfe-6173426f431a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{3300bbbb-8afc-4eb0-8609-0ad7556dff98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{dfd514b7-59b5-4654-922a-7cc82b1125af}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
