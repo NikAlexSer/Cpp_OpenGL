@@ -10,6 +10,7 @@
 #include "GlslShader.h"
 #include "SimpleCamera.h"
 #include "Skybox.h"
+#include "SimpleLoaderCollada3D.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -46,11 +47,8 @@ class App {
 		vec3 axis;
 		vec3 angles;
 
-		GLuint loadBmp(string fileName);
-		GLuint loadDDS(string fileName);
 		GLuint texture1;
 		GLuint texture2;
-
 
 		GLFWwindow* getWindow() {
 			return window;
@@ -63,7 +61,9 @@ class App {
 		GLFWwindow* window;
 		GlslShader shader;
 		SimpleCamera camera;
+		loaderImage loader;
 		SkyBox skyBox;
+		SimpleLoaderCollada3D model3D;
 		mat4 globalMVP;
 		mat4 model;
 		GLuint vertexBuffer;

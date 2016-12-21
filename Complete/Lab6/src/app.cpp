@@ -59,6 +59,12 @@ void App::setupScene() {
 
 	/// Инициализируем новый компонент skyBox, задаем откуда будут грузиться текстуры, а также его размер:
 	skyBox.setup("skybox", 500);
+
+	model3D.setup("house");
+	model3D.setScale(0.03, 0.03, 0.03);
+	model3D.setRotate(-90, vec3(1, 0, 0));
+	model3D.setRotate(140, vec3(0, 0, 1));
+	model3D.setPosition(-200, 0, 0);
 }
 
 
@@ -128,6 +134,8 @@ void App::update() {
 	globalMVP = projection * view * model;
 
 	skyBox.update(camera.getCameraMatrix(), camera.getPosition());
+
+	model3D.update(camera.getCameraMatrix());
 }
 
 //рендер одного кадра
@@ -139,6 +147,7 @@ void App::draw() {
 
 	glDepthFunc(GL_LESS);
 	drawTextureCube();
+	model3D.draw();
 	glBindVertexArray(0);
 
 	/// Рисуем внешнее окружение:
@@ -150,134 +159,6 @@ void App::exit() {
 	glfwDestroyWindow(window);
 	glfwTerminate();
 	std::exit(EXIT_FAILURE);
-}
-
-
-GLuint App::loadBmp(string fileName) {
-	//Получаем путь до проги, конвертируем, ищем слэш,
-	//копируем в переменную exePath и формируем полный путь
-	char buffer[MAX_PATH];
-	GetModuleFileNameA(NULL, buffer, MAX_PATH);
-	string exePathWithName = string(buffer);
-	string::size_type pos = exePathWithName.find_last_of("\\/");
-	string exePath = string(exePathWithName).substr(0, pos);
-	string fullPath = exePath + "\\data\\" + fileName;
-
-	//открытие
-	FILE * file = fopen(fullPath.c_str(), "rb");
-	if (!file) {
-		cout << "error load image!" << endl;
-		return 0;
-	}
-
-	unsigned char header[54];
-	if (fread(header, 1, 54, file) != 54) {
-		cout << "error read header!" << endl;
-	}
-	if (header[0] != 'B' || header[1] != 'M') {
-		cout << "not a correct bmp file" << endl;
-		return 0;
-	}
-	unsigned int dataPos = *(int*)&(header[0x0A]);
-	unsigned int imageSize = *(int*)&(header[0x22]);
-	unsigned int width = *(int*)&(header[0x12]);
-	unsigned int height = *(int*)&(header[0x16]);
-
-	if (imageSize == 0) imageSize = width * height * 3;
-	if (dataPos == 0) dataPos = 54;
-
-	unsigned char * data = new unsigned char[imageSize];
-	fread(data, 1, imageSize, file);
-	fclose(file);
-
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
-	//Базовая фильтрация:
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	delete data;
-	return textureID;
-}
-
-GLuint App::loadDDS(string fileName) {
-	char buffer[MAX_PATH];
-	GetModuleFileNameA(NULL, buffer, MAX_PATH);
-	string exePathWithName = string(buffer);
-	string::size_type pos = exePathWithName.find_last_of("\\/");
-	string exePath = string(exePathWithName).substr(0, pos);
-	string fullPath = exePath + "\\data\\" + fileName;
-
-	//открытие
-	FILE * file = fopen(fullPath.c_str(), "rb");
-	if (!file) {
-		cout << "error load image!" << endl;
-		return 0;
-	}
-
-	char filecode[4];
-	fread(filecode, 1, 4, file);
-	if (strncmp(filecode, "DDS ", 4) != 0) {
-		fclose(file);
-		cout << "extension file wrong!" << endl;
-		cout << "error load image!" << endl;
-		return 0;
-	}
-	unsigned char header[124];
-	fread(&header, 124, 1, file);
-	unsigned int height			= *(unsigned int*)&(header[8 ]);
-	unsigned int width			= *(unsigned int*)&(header[12]);
-	unsigned int linearSize		= *(unsigned int*)&(header[16]);
-	unsigned int mipMapCount	= *(unsigned int*)&(header[24]);
-	unsigned int fourCC			= *(unsigned int*)&(header[80]);
-
-	unsigned char * bufferData;
-	unsigned int bufsize;
-	bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize;
-	bufferData = (unsigned char*)malloc(bufsize * sizeof(unsigned char));
-	fread(bufferData, 1, bufsize, file);
-	fclose(file);
-
-	//Сжатие и тд и тп
-	unsigned int components = (fourCC == FOURCC_DXT1) ? 3 : 4;
-	unsigned int format;
-	switch (fourCC) {
-		case FOURCC_DXT1:
-			format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
-			break;
-		case FOURCC_DXT3:
-			format = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
-			break;
-		case FOURCC_DXT5:
-			format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
-			break;
-		default:
-			free(bufferData);
-			return 0;
-	}
-
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	
-	unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16;
-	unsigned int offset = 0;
-	for (unsigned int level = 0; level < mipMapCount && (width || height); ++level) {
-		unsigned int size = ((width + 3) / 4)*((height + 3) / 4)*blockSize;
-		glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, height, 0, size, bufferData + offset);
-		offset += size;
-		width /= 2;
-		height /= 2;
-	}
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glGenerateMipmap(GL_TEXTURE_2D);
-
-	delete bufferData;
-	return textureID;
 }
 
 
@@ -346,9 +227,9 @@ void App::createTextureCube() {
 	glBufferData(GL_ARRAY_BUFFER, sizeof(gVertexBufferData), gVertexBufferData, GL_STATIC_DRAW);
 
 	/// Загружаем текстуру, и записываем её идентификатор в texture1:
-	//texture1 = loadBmp("container.bmp");
-	texture1 = loadDDS("container.dds");
-	texture2 = loadDDS("iron.dds");
+	//texture1 = loader.loadBmp("container.bmp");
+	texture1 = loader.loadDDS("container.dds");
+	texture2 = loader.loadDDS("iron.dds");
 	/// Коэфицент смешивания:
 	mixFactor = 0;
 

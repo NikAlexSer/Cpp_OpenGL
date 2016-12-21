@@ -27,7 +27,11 @@ public:
 	/// Передаем в шейдер матрицу 4*4:
 	void setUniformMatrix4fv(string name, GLfloat* value);
 	void setUniform1f(string name, GLfloat value);
-	void setUniform3f(string name, GLfloat x, GLfloat y, GLfloat z);
+	void setUniform1i(string name, GLuint value);
+	//void setUniform3f(string name, GLfloat x, GLfloat y, GLfloat z);
+	/// Передаем вектор:
+	void setUniform3f(string name, float x, float y, float z);
+
 
 
 private:

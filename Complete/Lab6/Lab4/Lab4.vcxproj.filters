@@ -16,6 +16,21 @@
     <ClCompile Include="..\src\Skybox.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SimpleLoaderCollada3D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinystr.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinyxml.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinyxmlerror.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml\tinyxmlparser.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\app.h">
@@ -36,6 +51,15 @@
     <ClInclude Include="..\src\Skybox.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\SimpleLoaderCollada3D.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Release\data\skyBox.frag">
@@ -50,6 +74,12 @@
     <None Include="..\x64\Release\data\simpleShader.vert">
       <Filter>shaders</Filter>
     </None>
+    <None Include="..\x64\Release\data\simpleShader2.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\x64\Release\data\simpleShader2.vert">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="shaders">
@@ -57,6 +87,9 @@
     </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{3300bbbb-8afc-4eb0-8609-0ad7556dff98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{dfd514b7-59b5-4654-922a-7cc82b1125af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
