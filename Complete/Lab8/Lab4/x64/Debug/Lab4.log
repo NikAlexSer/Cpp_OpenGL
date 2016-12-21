@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Lab6.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  SimpleLoaderCollada3D.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: APIENTRY: изменение макроопределения
+  d:\opengl\complete\gl\include\glfw\glfw3.h(98): note: см. предыдущее определение "APIENTRY"
+d:\opengl\complete\lab8\src\simpleloadercollada3d.cpp(45): warning C4267: аргумент: преобразование из "size_t" в "GLsizei"; возможна потеря данных
+d:\opengl\complete\lab8\src\simpleloadercollada3d.cpp(65): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+  Lab4.vcxproj -> D:\OpenGL\Complete\Lab8\x64\Debug\Lab8.exe
+  Lab4.vcxproj -> D:\OpenGL\Complete\Lab8\x64\Debug\Lab8.pdb (Partial PDB)
+  ..\..\GL\bin\glew32.dll
+  ..\..\GL\bin\glfw3.dll
+  Скопировано файлов: 2.
