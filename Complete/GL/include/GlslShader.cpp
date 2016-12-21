@@ -112,8 +112,18 @@ void GlslShader::setUniform1f(string name, GLfloat value) {
 	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
 	glUniform1f(uniformID, value);
 }
+void GlslShader::setUniform1i(string name, GLuint value) {
+	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
+	glUniform1i(uniformID, value);
+}
 
-void GlslShader::setUniform3f(string name, GLfloat x, GLfloat y, GLfloat z) {
+/*void GlslShader::setUniform3f(string name, GLfloat x, GLfloat y, GLfloat z) {
+	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
+	glUniform3f(uniformID, x, y, z);
+}*/
+
+/// Передаем вектор:
+void GlslShader::setUniform3f(string name, float x, float y, float z) {
 	GLuint uniformID = glGetUniformLocation(getProgramID(), name.c_str());
 	glUniform3f(uniformID, x, y, z);
 }
